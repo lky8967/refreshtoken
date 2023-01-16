@@ -23,10 +23,10 @@ public class LoginController {
     @PostMapping("/api/login")
     public Token login(final HttpServletResponse response , @RequestBody LoginRequestDto loginRequestDto) {
 //        log.info("user email = {}", user.get("userEmail"));
-        String login = String.valueOf(loginService.login(loginRequestDto));
         Token Token = jwtTokenProvider.createToken(loginRequestDto.getUsername());
+//        String login = String.valueOf(loginService.login(loginRequestDto));
 //        log.info("getroleeeee = {}", member.getRoles());
-//        jwtService.login(tokenDto);
+        loginService.login(Token);
 //        return "로그인";
         return Token;
     }
